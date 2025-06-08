@@ -47,8 +47,11 @@ export function App() {
           <DigItems onItemClick={agregarPieza} />
         </section>
 
-        <section className="flex justify-center">
+        <section className="flex flex-col gap-5 items-center justify-center">
           <DigTable piezas={piezas} setPiezas={setPiezas} />
+          <h1 className='px-2 py-2 bg-[#030712]/60 rounded-full border-2 border-cyan-800/50'>
+            <b>Donate:</b> <span className="bg-amber-400/20 px-2 py-1 rounded-full">0xAf57D68A12F28501580407B80B4d3690c9B74e62</span>
+          </h1>
         </section>
       </main>
     </Layout>

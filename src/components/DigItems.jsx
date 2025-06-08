@@ -62,7 +62,7 @@ export function DigItems({ onItemClick }) {
               src={img} 
               title={name} 
               alt={name} 
-              className="size-[2rem] object-contain aspect-square" 
+              className="size-[1.9rem] object-contain aspect-square" 
               style={{ imageRendering: 'pixelated' }} 
             />
           </div>
