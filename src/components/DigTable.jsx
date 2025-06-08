@@ -42,6 +42,7 @@ export function DigTable({ piezas, setPiezas }) {
             onStop={(e, data) => handleStop(pieza.id, e, data)}
             grid={[cellSize, cellSize]}
             bounds="parent"
+            cancel=".no-drag"
           >
             <div
               ref={nodeRef}
@@ -55,12 +56,12 @@ export function DigTable({ piezas, setPiezas }) {
               <img
                 src={pieza.src}
                 alt={pieza.nombre}
-                className="w-[1.8rem] object-contain aspect-square drop-shadow drop-shadow-green-900"
+                className="w-[1.8rem] object-contain aspect-square drop-shadow drop-shadow-green-900 no-drag"
                 style={{ imageRendering: "pixelated" }}
               />
               <button
                 onClick={(e) => eliminarPieza(pieza.id, e)}
-                className="absolute -top-2 -right-2 rounded-full w-5 h-5 flex items-center justify-center text-xs opacity-0 group-hover:opacity-90 transition-opacity z-10 cursor-pointer"
+                className="absolute -top-2 -right-2 rounded-full w-5 h-5 flex items-center justify-center text-xs opacity-0 group-hover:opacity-90 transition-opacity z-10 cursor-pointer no-drag"
                 aria-label="Eliminar pieza"
               >
                 <img src="https://img.icons8.com/color/cancel" alt="Cancel image" />
