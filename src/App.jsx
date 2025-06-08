@@ -5,13 +5,11 @@ import { DigTable } from "./components/DigTable";
 import { DigItems } from "./components/DigItems";
 
 export function App() {
-  // Cargar piezas desde localStorage al inicio
   const [piezas, setPiezas] = useState(() => {
     const saved = localStorage.getItem("digProgress");
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Guardar en localStorage cada vez que cambien las piezas
   useEffect(() => {
     localStorage.setItem("digProgress", JSON.stringify(piezas));
   }, [piezas]);

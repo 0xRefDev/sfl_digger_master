@@ -55,7 +55,7 @@ export function DigItems({ onItemClick }) {
         {Object.entries(digItems).map(([name, img]) => (
           <div 
             key={name}
-            onClick={() => onItemClick(img, name)}  // ¡Ejecuta la prop aquí!
+            onClick={() => onItemClick(img, name)}
             className="cursor-pointer hover:scale-110 transition-transform p-1"
           >
             <img 

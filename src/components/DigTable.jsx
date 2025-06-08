@@ -16,7 +16,7 @@ export function DigTable({ piezas, setPiezas }) {
 
   return (
     <div className="relative flex justify-center" style={{ width: imgWidth, height: imgHeight }}>
-      {/* Imagen de fondo */}
+
       <img
         src={DigSite}
         alt="DigSite"
@@ -24,13 +24,13 @@ export function DigTable({ piezas, setPiezas }) {
         style={{ zIndex: 0 }}
       />
 
-      {/* Contenedor de piezas (asegura que no tenga estilos conflictivos) */}
+
       <div className="absolute top-4 left-0 w-full h-full">
         {piezas.map((pieza) => (
           <Draggable
             key={pieza.id}
             nodeRef={nodeRef}
-            defaultPosition={{ x: pieza.x, y: pieza.y }} // Usa defaultPosition en lugar de position
+            defaultPosition={{ x: pieza.x, y: pieza.y }} 
             onStop={(e, data) => handleStop(pieza.id, e, data)}
             grid={[cellSize, cellSize]}
             bounds="parent"
@@ -41,7 +41,7 @@ export function DigTable({ piezas, setPiezas }) {
               style={{
                 width: `${cellSize}px`,
                 height: `${cellSize}px`,
-                transform: `translate(${pieza.x}px, ${pieza.y}px)` // ¡Clave! Usa translate en lugar de left/top
+                transform: `translate(${pieza.x}px, ${pieza.y}px)` 
               }}
             >
               <img
