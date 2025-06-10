@@ -46,7 +46,7 @@ export function DigTable({ piezas, setPiezas }) {
           >
             <div
               ref={nodeRef}
-              className="cursor-move flex items-center justify-center absolute group"
+              className="cursor-grab flex items-center justify-center absolute group"
               style={{
                 width: `${cellSize}px`,
                 height: `${cellSize}px`,
@@ -56,7 +56,8 @@ export function DigTable({ piezas, setPiezas }) {
               <img
                 src={pieza.src}
                 alt={pieza.nombre}
-                className="w-[1.8rem] object-contain aspect-square drop-shadow drop-shadow-green-900 no-drag"
+                className="w-[1.8rem] object-contain aspect-square drop-shadow drop-shadow-green-900 no-drag select-none"
+                draggable="false"
                 style={{ imageRendering: "pixelated" }}
               />
               <button

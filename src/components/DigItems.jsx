@@ -20,38 +20,42 @@ import OldBottle from "../assets/images/old_bottle.png";
 import Pearl from "../assets/images/pearl.webp";
 import IronCompass from "../assets/images/iron_compass.webp";
 import EmeraldCompass from "../assets/images/emerald_compass.webp";
+import Nothing from "../assets/images/nothing.png";
+import Possible from "../assets/images/possible.png";
 
 export function DigItems({ onItemClick }) {
    console.log("onItemClick recibido:", onItemClick);
 
   const digItems = {
-  "Ancient Clock": AncientClock,
+  "Possible": Possible,
+  "Nothing": Nothing,
+  Sand: Sand,
+  Crab: Crab,
   "Broken Pillar": BrokenPillar,
   "Camel Bone": CamelBone,
   "Clam Shell": ClamShell,
-  "Cow Skull": CowSkull,
-  Crab: Crab,
-  Pipi: Pipi,
-  Sand: Sand,
-  "Pirate Bounty": PirateBounty,
-  Scarab: Scarab,
+  "Old Bottle": OldBottle,
+  "Ancient Clock": AncientClock,
+  Hieroglyph: Hieroglyph,
   "Sea Cucumber": SeaCucumber,
   "Sea Weed": SeaWeed,
-  "Star Fish": StarFish,
-  Vase: Vase,
-  "Wooden Compass": WoodenCompass,
-  Coral: Coral,
-  "Cockle Shell": CockleShell,
-  Hieroglyph: Hieroglyph,
-  "Old Bottle": OldBottle,
   Pearl: Pearl,
+  "Star Fish": StarFish,
+  "Cockle Shell": CockleShell,
+  Coral: Coral,
+  Vase: Vase,
+  Pipi: Pipi,
+  "Wooden Compass": WoodenCompass,
+  Scarab: Scarab,
+  "Pirate Bounty": PirateBounty,
+  "Cow Skull": CowSkull,
   "Iron Compass": IronCompass,
   "Emerald Compass": EmeraldCompass,
 };
 
   return (
     <article className="px-2 max-w-[550px]">
-      <div className="w-full py-2 flex flex-wrap justify-center items-center gap-1 rounded-lg outline-2 outline-amber-400/75">
+      <div className="w-full h-[6rem] overflow-y-auto py-2 flex flex-wrap justify-center items-center gap-1 rounded-lg outline-2 outline-amber-400/75">
         {Object.entries(digItems).map(([name, img]) => (
           <div 
             key={name}
@@ -62,7 +66,8 @@ export function DigItems({ onItemClick }) {
               src={img} 
               title={name} 
               alt={name} 
-              className="size-[1.9rem] object-contain aspect-square" 
+              className="size-[1.9rem] object-contain aspect-square select-none" 
+              draggable="false"
               style={{ imageRendering: 'pixelated' }} 
             />
           </div>
