@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import AncientClock from "../assets/images/ancient_clock.png";
 import BrokenPillar from "../assets/images/broken_pillar.webp";
 import CamelBone from "../assets/images/camel_bone.webp";
@@ -23,8 +24,20 @@ import EmeraldCompass from "../assets/images/emerald_compass.webp";
 import Nothing from "../assets/images/nothing.png";
 import Possible from "../assets/images/possible.png";
 
+
 export function DigItems({ onItemClick }) {
-   console.log("onItemClick recibido:", onItemClick);
+
+const dragItem = useRef(null);
+
+  const handleDragStart = (e, img, name) => {
+    e.dataTransfer.setData("text/plain", JSON.stringify({ img, name }));
+    dragItem.current = e.target;
+    e.target.style.opacity = "0.4";
+  };
+
+  const handleDragEnd = (e) => {
+    e.target.style.opacity = "1";
+  };
 
   const digItems = {
   "Possible": Possible,
@@ -60,6 +73,9 @@ export function DigItems({ onItemClick }) {
           <div 
             key={name}
             onClick={() => onItemClick(img, name)}
+            draggable
+            onDragStart={(e) => handleDragStart(e, img, name)}
+            onDragEnd={handleDragEnd}
             className="cursor-pointer hover:scale-110 transition-transform p-1"
           >
             <img 

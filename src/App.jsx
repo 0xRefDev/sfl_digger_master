@@ -44,7 +44,7 @@ export function App() {
             <img src="https://img.icons8.com/?size=24&id=59872&format=png&color=ffffff" alt="Refresh image" />
           </button>
           </div>
-          <DigItems onItemClick={agregarPieza} />
+          <DigItems />
         </section>
 
         <section className="flex flex-col gap-5 items-center justify-center">

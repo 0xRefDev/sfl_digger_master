@@ -8,6 +8,10 @@ export function DigTable({ piezas, setPiezas }) {
   const cellSize = imgWidth / 10;
   const nodeRef = useRef(null);
 
+  const handleDragOver = (e) => {
+    e.preventDefault(); // Necesario para permitir el drop
+  };
+
   const handleStop = (id, e, data) => {
     const snappedX = Math.round(data.x / cellSize) * cellSize;
     const snappedY = Math.round(data.y / cellSize) * cellSize;
@@ -21,10 +25,36 @@ export function DigTable({ piezas, setPiezas }) {
     setPiezas(piezas.filter((pieza) => pieza.id !== id));
   };
 
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const data = JSON.parse(e.dataTransfer.getData("text/plain"));
+
+    // Calcula la posición relativa al tablero
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left - cellSize / 2;
+    const y = e.clientY - rect.top - cellSize / 2;
+
+    // Snap to grid
+    const snappedX = Math.round(x / cellSize) * cellSize;
+    const snappedY = Math.round(y / cellSize) * cellSize;
+
+    const nuevaPieza = {
+      id: Date.now(),
+      src: data.img,
+      nombre: data.name,
+      x: snappedX,
+      y: snappedY,
+    };
+
+    setPiezas([...piezas, nuevaPieza]);
+  };
+
   return (
     <div
       className="relative flex justify-center"
       style={{ width: imgWidth, height: imgHeight }}
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
     >
       <img
         src={DigSite}
@@ -65,7 +95,10 @@ export function DigTable({ piezas, setPiezas }) {
                 className="absolute -top-2 -right-2 rounded-full w-5 h-5 flex items-center justify-center text-xs opacity-0 group-hover:opacity-90 transition-opacity z-10 cursor-pointer no-drag"
                 aria-label="Eliminar pieza"
               >
-                <img src="https://img.icons8.com/color/cancel" alt="Cancel image" />
+                <img
+                  src="https://img.icons8.com/color/cancel"
+                  alt="Cancel image"
+                />
               </button>
             </div>
           </Draggable>
