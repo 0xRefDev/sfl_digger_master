@@ -23,7 +23,8 @@ import IronCompass from "../assets/images/iron_compass.webp";
 import EmeraldCompass from "../assets/images/emerald_compass.webp";
 import Nothing from "../assets/images/nothing.png";
 import Possible from "../assets/images/possible.png";
-
+import Wood from "../assets/images/wood.png";
+import Stone from "../assets/images/stone.png";
 
 export function DigItems({ onItemClick }) {
 
@@ -40,31 +41,33 @@ const dragItem = useRef(null);
   };
 
   const digItems = {
-  "Possible": Possible,
-  "Nothing": Nothing,
-  Sand: Sand,
-  Crab: Crab,
-  "Broken Pillar": BrokenPillar,
-  "Camel Bone": CamelBone,
-  "Clam Shell": ClamShell,
-  "Old Bottle": OldBottle,
-  "Ancient Clock": AncientClock,
-  Hieroglyph: Hieroglyph,
-  "Sea Cucumber": SeaCucumber,
-  "Sea Weed": SeaWeed,
-  Pearl: Pearl,
-  "Star Fish": StarFish,
-  "Cockle Shell": CockleShell,
-  Coral: Coral,
-  Vase: Vase,
-  Pipi: Pipi,
-  "Wooden Compass": WoodenCompass,
-  Scarab: Scarab,
-  "Pirate Bounty": PirateBounty,
-  "Cow Skull": CowSkull,
-  "Iron Compass": IronCompass,
-  "Emerald Compass": EmeraldCompass,
-};
+    Possible: Possible,
+    Nothing: Nothing,
+    Sand: Sand,
+    Crab: Crab,
+    "Broken Pillar": BrokenPillar,
+    "Camel Bone": CamelBone,
+    "Clam Shell": ClamShell,
+    "Old Bottle": OldBottle,
+    Vase: Vase,
+    Hieroglyph: Hieroglyph,
+    "Ancient Clock": AncientClock,
+    "Sea Cucumber": SeaCucumber,
+    Pipi: Pipi,
+    "Sea Weed": SeaWeed,
+    "Star Fish": StarFish,
+    Coral: Coral,
+    Pearl: Pearl,
+    Stone,
+    Wood,
+    "Wooden Compass": WoodenCompass,
+    "Cockle Shell": CockleShell,
+    "Pirate Bounty": PirateBounty,
+    Scarab: Scarab,
+    "Cow Skull": CowSkull,
+    "Iron Compass": IronCompass,
+    "Emerald Compass": EmeraldCompass,
+  };
 
   return (
     <article className="px-2 max-w-[550px]">
