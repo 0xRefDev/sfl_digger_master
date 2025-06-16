@@ -9,7 +9,7 @@ export function DigTable({ piezas, setPiezas }) {
   const nodeRef = useRef(null);
 
   const handleDragOver = (e) => {
-    e.preventDefault(); // Necesario para permitir el drop
+    e.preventDefault();
   };
 
   const handleStop = (id, e, data) => {
@@ -21,7 +21,7 @@ export function DigTable({ piezas, setPiezas }) {
   };
 
   const eliminarPieza = (id, e) => {
-    e.stopPropagation(); // Evita que se active el arrastre
+    e.stopPropagation();
     setPiezas(piezas.filter((pieza) => pieza.id !== id));
   };
 
@@ -29,7 +29,6 @@ export function DigTable({ piezas, setPiezas }) {
     e.preventDefault();
     const data = JSON.parse(e.dataTransfer.getData("text/plain"));
 
-    // Calcula la posición relativa al tablero
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left - cellSize / 2;
     const y = e.clientY - rect.top - cellSize / 2;
@@ -86,7 +85,7 @@ export function DigTable({ piezas, setPiezas }) {
               <img
                 src={pieza.src}
                 alt={pieza.nombre}
-                className="w-[1.8rem] object-contain aspect-square drop-shadow drop-shadow-green-900 no-drag select-none"
+                className="w-full h-full object-contain p-2 drop-shadow drop-shadow-green-900"
                 draggable="false"
                 style={{ imageRendering: "pixelated" }}
               />

@@ -14,18 +14,6 @@ export function App() {
     localStorage.setItem("digProgress", JSON.stringify(piezas));
   }, [piezas]);
 
-  const agregarPieza = (src, nombre) => {
-    console.log("Añadiendo pieza:", nombre);
-    const nuevaPieza = {
-      id: Date.now(),
-      src,
-      nombre,
-      x: 0,
-      y: 0,
-    };
-    setPiezas([...piezas, nuevaPieza]);
-  };
-
   return (
     <Layout>
       <Header />
