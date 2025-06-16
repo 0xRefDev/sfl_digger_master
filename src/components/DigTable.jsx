@@ -8,6 +8,12 @@ export function DigTable({ piezas, setPiezas }) {
   const cellSize = imgWidth / 10;
   const nodeRef = useRef(null);
 
+  const digCount = 25;
+  
+  if (piezas.length > 0) {
+    localStorage.setItem("usedShovels", JSON.stringify(digCount - piezas.length));
+  }
+
   const handleDragOver = (e) => {
     e.preventDefault();
   };
@@ -23,6 +29,7 @@ export function DigTable({ piezas, setPiezas }) {
   const eliminarPieza = (id, e) => {
     e.stopPropagation();
     setPiezas(piezas.filter((pieza) => pieza.id !== id));
+    localStorage.setItem("usedShovels", JSON.stringify(digCount - piezas.length + 1));
   };
 
   const handleDrop = (e) => {
@@ -58,7 +65,7 @@ export function DigTable({ piezas, setPiezas }) {
       <img
         src={DigSite}
         alt="DigSite"
-        className="absolute top-4 left-0 w-full h-full block pointer-events-none rounded-lg"
+        className="absolute top-4 left-0 w-full h-full block pointer-events-none rounded-lg select-none user-drag-none"
         style={{ zIndex: 0 }}
       />
 
