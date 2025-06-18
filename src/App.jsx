@@ -64,13 +64,15 @@ export function App() {
   };
 
   let digs = 25;
-  piezas.map((p) => {
-    if (p.name === "Nothing" || p.name === "Possible") {
-      digs
-    } else {
-      digs = digs - 1;
-    }
-  })
+  if (piezas.length > 0) {
+    piezas.map((p) => {
+      if (p.name === "Nothing" || p.name === "Possible") {
+        digs
+      } else {
+        digs = digs - 1;
+      }
+    })
+  }
 
   return (
     <Layout>
