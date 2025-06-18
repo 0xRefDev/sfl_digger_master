@@ -51,13 +51,14 @@ export function App() {
   const igDigProgress = async () => {
     try {
       const response = await fetch(
-        `https://cors-proxy.refh4ck-dev.workers.dev/?url=https://api.sunflower-land.com/visit/${farmId}`,
+        `https://cors-proxy.refh4ck-dev.workers.dev/?url=${encodeURIComponent(
+          `https://api.sunflower-land.com/visit/${farmId}`
+        )}`,
         {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
-          mode: "cors"
         }
       );
       if (!response.ok) throw new Error("Error al obtener el progreso");
