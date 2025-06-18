@@ -64,7 +64,7 @@ export function App() {
   };
 
   let digs = 25;
-  if (Array.isArray(piezas) {
+  if (Array.isArray(piezas)) {
     piezas.forEach((p) => {
       if (p?.nombre && p.nombre !== "Nothing" && p.nombre !== "Possible") {
         digs = digs - 1;
