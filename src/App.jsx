@@ -11,13 +11,22 @@ export function App() {
     const saved = localStorage.getItem("digProgress");
     return saved ? JSON.parse(saved).igDiggingProgress : null;
   });
+
   const [piezas, setPiezas] = useState(() => {
+    if (typeof window === "undefined") return []; // Para SSR
+
     try {
-      if (typeof window === 'undefined') return [];
       const saved = localStorage.getItem("digProgress");
-      return saved ? JSON.parse(saved) : [];
-    } catch (error) {
-      console.error("Error al cargar piezas:", error);
+      if (!saved) return [];
+
+      const parsed = JSON.parse(saved);
+      // Validación profunda del array
+      return Array.isArray(parsed)
+        ? parsed.filter((item) => item?.id && item?.src && item?.nombre)
+        : [];
+    } catch (e) {
+      console.error("Error al cargar piezas:", e);
+      localStorage.removeItem("digProgress"); // Limpia datos corruptos
       return [];
     }
   });
