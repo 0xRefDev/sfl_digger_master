@@ -64,7 +64,7 @@ export function App() {
   };
 
   let digs = 25;
-  if (piezas.length > 0) {
+  if (piezas != '') {
     piezas.map((p) => {
       if (p.name === "Nothing" || p.name === "Possible") {
         digs
