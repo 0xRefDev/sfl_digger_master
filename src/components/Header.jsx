@@ -9,7 +9,7 @@ export function Header() {
       <header className="relative flex items-center justify-center flex-col p-4 gap-3 max-w-[550px] mx-auto">
         <a
           href="https://discord.gg/MexBzYbxju"
-          noreferrer
+          noreferrer="true"
           target="_blank"
           className="absolute top-4 left-4"
         >

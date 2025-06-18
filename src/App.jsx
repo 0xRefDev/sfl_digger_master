@@ -6,27 +6,84 @@ import { DigItems } from "./components/DigItems";
 import Shovel from "./assets/images/shovel.png";
 
 export function App() {
+  const [farmId, setFarmId] = useState("");
+  const [igDiggingProgress, setIgDiggingProgress] = useState(() => {
+    const saved = localStorage.getItem("digProgress");
+    return saved ? JSON.parse(saved).igDiggingProgress : null;
+  });
   const [piezas, setPiezas] = useState(() => {
     const saved = localStorage.getItem("digProgress");
-    return saved ? JSON.parse(saved) : [];
+    return saved ? JSON.parse(saved).piezas : [];
   });
 
   useEffect(() => {
-    localStorage.setItem("digProgress", JSON.stringify(piezas));
-  }, [piezas]);
+    const progressData = {
+      piezas,
+      igDiggingProgress,
+    };
+    localStorage.setItem("digProgress", JSON.stringify(progressData));
+  }, [piezas, igDiggingProgress]);
+
+  const handleSetFarmId = (e) => {
+    const value = e.target.value;
+    if (/^\d*$/.test(value)) {
+      setFarmId(value);
+    } else {
+      alert("Tu Farm ID solo debe contener números😬");
+    }
+  };
+
+  const igDigProgress = async () => {
+    try {
+      const response = await fetch(
+        `https://cors-anywhere.herokuapp.com/https://api.sunflower-land.com/visit/${farmId}`
+      );
+      if (!response.ok) throw new Error("Error al obtener el progreso");
+
+      const data = await response.json();
+
+      // Guarda el digging progress correctamente
+      if (data.state?.desert?.digging) {
+        setIgDiggingProgress(data.state.desert.digging);
+      } else {
+        setIgDiggingProgress(null);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error al cargar el progreso. Verifica tu Farm ID.");
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (farmId) {
+      igDigProgress();
+    } else {
+      alert("Por favor, ingresa tu Farm ID.");
+    }
+  };
+
+  let digs = 25;
+  piezas.map((p) => {
+    if (p.name === "Nothing" || p.name === "Possible") {
+      digs
+    } else {
+      digs = digs - 1;
+    }
+  })
 
   return (
     <Layout>
       <Header />
-      <main className="max-w-[800px] mx-auto">
+      <main className="max-w-[550px] mx-auto">
         <section className="w-full flex flex-col items-center justify-center">
-          <article className="w-full flex justify-between items-center gap-4 px-4">
+          <article className="w-full flex justify-between items-center gap-4 px-4 mt-2">
             <div className="flex items-center gap-2">
-              <h1 className="text-xl font-bold text-center my-4">Dig Items</h1>
               <button
                 onClick={() => {
                   if (confirm("¿Reiniciar todo el progreso?")) {
                     setPiezas([]);
+                    setIgDiggingProgress([]);
                     localStorage.setItem("usedShovels", JSON.stringify(25));
                   }
                 }}
@@ -38,9 +95,22 @@ export function App() {
                 />
               </button>
             </div>
+            <form
+              onSubmit={(e) => {
+                handleSubmit(e);
+              }}
+            >
+              <input
+                type="text"
+                className="outline-none bg-[#030712]/60 rounded-full border-2 border-cyan-800/50 px-4 py-1 placeholder:text-green-500/90 placeholder:font-mono"
+                placeholder="# Farm ID"
+                value={farmId}
+                onChange={handleSetFarmId}
+              />
+            </form>
             <div className="flex items-center gap-2">
               <h1 className="text-xl font-bold text-center my-4">
-                Digs restantes: {25 - piezas.length}
+                {digs < 0 ? 0 : digs}
               </h1>
               <img
                 src={Shovel}
@@ -54,13 +124,11 @@ export function App() {
         </section>
 
         <section className="flex flex-col gap-5 items-center justify-center">
-          <DigTable piezas={piezas} setPiezas={setPiezas} />
-          <h1 className="px-2 py-2 bg-[#030712]/60 rounded-full border-2 border-cyan-800/50">
-            <b>Donate:</b>{" "}
-            <span className="bg-amber-400/20 px-2 py-1 rounded-full">
-              0xAf57D68A12F28501580407B80B4d3690c9B74e62
-            </span>
-          </h1>
+          <DigTable
+            piezas={piezas}
+            setPiezas={setPiezas}
+            igProgress={igDiggingProgress}
+          />
         </section>
       </main>
     </Layout>
