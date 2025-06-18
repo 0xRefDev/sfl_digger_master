@@ -13,7 +13,7 @@ export function App() {
   });
 
   const [piezas, setPiezas] = useState(() => {
-    if (typeof window === "undefined") return []; // Para SSR
+    if (typeof window === "undefined") return [];
 
     try {
       const saved = localStorage.getItem("digProgress");
@@ -26,7 +26,7 @@ export function App() {
         : [];
     } catch (e) {
       console.error("Error al cargar piezas:", e);
-      localStorage.removeItem("digProgress"); // Limpia datos corruptos
+      localStorage.removeItem("digProgress");
       return [];
     }
   });
@@ -51,7 +51,14 @@ export function App() {
   const igDigProgress = async () => {
     try {
       const response = await fetch(
-        `https://api.sunflower-land.com/visit/${farmId}`
+        `https://api.sunflower-land.com/visit/${farmId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          mode: "cors"
+        }
       );
       if (!response.ok) throw new Error("Error al obtener el progreso");
 
