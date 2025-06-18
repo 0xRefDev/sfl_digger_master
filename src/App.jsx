@@ -36,7 +36,7 @@ export function App() {
   const igDigProgress = async () => {
     try {
       const response = await fetch(
-        `https://cors-anywhere.herokuapp.com/https://api.sunflower-land.com/visit/${farmId}`
+        `https://api.sunflower-land.com/visit/${farmId}`
       );
       if (!response.ok) throw new Error("Error al obtener el progreso");
 
