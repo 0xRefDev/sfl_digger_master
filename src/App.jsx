@@ -51,7 +51,7 @@ export function App() {
   const igDigProgress = async () => {
     try {
       const response = await fetch(
-        `https://api.sunflower-land.com/visit/${farmId}`,
+        `https://cors-proxy.refh4ck-dev.workers.dev/?url=https://api.sunflower-land.com/visit/${farmId}`,
         {
           headers: {
             "Content-Type": "application/json",
