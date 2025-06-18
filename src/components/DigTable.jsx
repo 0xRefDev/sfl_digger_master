@@ -121,7 +121,7 @@ export function DigTable({ piezas = [], setPiezas, igProgress = [] }) {
       });
     }
 
-    setPiezas((prev) => [...prev, ...newPieces]);
+    setPiezas((prev = []) => [...prev, ...(Array.isArray(newPieces) ? newPieces : [])]);
   };
 
   return (

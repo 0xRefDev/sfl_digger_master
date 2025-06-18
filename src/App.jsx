@@ -12,8 +12,14 @@ export function App() {
     return saved ? JSON.parse(saved).igDiggingProgress : null;
   });
   const [piezas, setPiezas] = useState(() => {
-    const saved = localStorage.getItem("digProgress");
-    return saved ? JSON.parse(saved).piezas : [];
+    try {
+      if (typeof window === 'undefined') return [];
+      const saved = localStorage.getItem("digProgress");
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      console.error("Error al cargar piezas:", error);
+      return [];
+    }
   });
 
   useEffect(() => {
