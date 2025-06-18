@@ -3,7 +3,7 @@ import Draggable from "react-draggable";
 import DigSite from "../assets/images/digsite.png";
 import { digItems } from "./utils/item.js";
 
-export function DigTable({ piezas, setPiezas, igProgress }) {
+export function DigTable({ piezas = [], setPiezas, igProgress = [] }) {
   const imgWidth = 500;
   const imgHeight = 500;
   const cellSize = imgWidth / 10;
