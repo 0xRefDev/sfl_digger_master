@@ -64,14 +64,12 @@ export function App() {
   };
 
   let digs = 25;
-  if (piezas != '') {
-    piezas.map((p) => {
-      if (p.name === "Nothing" || p.name === "Possible") {
-        digs
-      } else {
+  if (Array.isArray(piezas) {
+    piezas.forEach((p) => {
+      if (p?.nombre && p.nombre !== "Nothing" && p.nombre !== "Possible") {
         digs = digs - 1;
       }
-    })
+    });
   }
 
   return (
