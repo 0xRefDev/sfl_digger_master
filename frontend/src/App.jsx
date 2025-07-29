@@ -51,20 +51,21 @@ export function App() {
   const igDigProgress = async () => {
     try {
       const response = await fetch(
-        `https://cors-proxy.refh4ck-dev.workers.dev/?url=${encodeURIComponent(
-          `https://api.sunflower-land.com/visit/${farmId}`
-        )}`,
+        `https://sfl-digger-master-backend.vercel.app/api/digData/${farmId}`,
         {
           headers: {
             Accept: "application/json",
+            "Content-Type": "application/json",
           },
         }
       );
-      if (!response.ok) throw new Error("Error al obtener el progreso");
+
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
 
       const data = await response.json();
 
-      // Guarda el digging progress correctamente
       if (data.state?.desert?.digging) {
         setIgDiggingProgress(data.state.desert.digging);
       } else {
