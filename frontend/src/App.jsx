@@ -69,7 +69,7 @@ export function App() {
       const data = await response.json();
 
       if (data.desert?.digging) {
-        setIgDiggingProgress(data.state.desert.digging);
+        setIgDiggingProgress(data.desert.digging);
       } else {
         setIgDiggingProgress(null);
       }
