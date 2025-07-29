@@ -53,6 +53,8 @@ export function App() {
       const response = await fetch(
         `https://sfl-digger-master-backend.vercel.app/api/digData/${farmId}`,
         {
+          method: "GET",
+          mode: "cors",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
