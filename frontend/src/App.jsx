@@ -68,7 +68,7 @@ export function App() {
 
       const data = await response.json();
       const digging = data?.visitedFarmState?.desert?.digging;
-      console.log("Digging data:", digging);
+      console.log("Digging data:", data.visitedFarmState.desert);
 
 
       if (digging) {
