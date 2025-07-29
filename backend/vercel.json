@@ -10,7 +10,13 @@
     {
       "src": "/(.*)",
       "dest": "src/app.js",
-      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+      "headers": {
+        "Access-Control-Allow-Origin": "https://dig-master.vercel.app",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization, Accept",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Expose-Headers": "Content-Length, X-JSON"
+      }
     }
   ]
 }
