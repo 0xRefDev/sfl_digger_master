@@ -68,8 +68,8 @@ export function App() {
 
       const data = await response.json();
 
-      if (data.visitedFarmState.desert.digging) {
-        setIgDiggingProgress(data.visitedFarmState.desert.digging);
+      if (data.visitedFarmState.desert.digging.grid) {
+        setIgDiggingProgress(data.visitedFarmState.desert.digging.grid);
       } else {
         setIgDiggingProgress(null);
       }
