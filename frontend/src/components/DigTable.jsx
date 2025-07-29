@@ -18,6 +18,9 @@ export function DigTable({ piezas = [], setPiezas, igProgress = [] }) {
     );
   }
 
+  console.log("igProgress", igProgress);
+
+
   const handleDragOver = (e) => {
     e.preventDefault();
   };
