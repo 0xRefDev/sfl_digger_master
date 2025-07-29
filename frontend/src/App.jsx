@@ -21,8 +21,8 @@ export function App() {
 
       const parsed = JSON.parse(saved);
       // Validación profunda del array
-      return Array.isArray(parsed)
-        ? parsed.filter((item) => item?.id && item?.src && item?.nombre)
+      return Array.isArray(parsed.piezas)
+        ? parsed.piezas.filter((item) => item?.id && item?.src && item?.nombre)
         : [];
     } catch (e) {
       console.error("Error al cargar piezas:", e);
