@@ -77,7 +77,17 @@ export function App() {
       console.log("Digging grid:", digging);
 
       if (Array.isArray(digging)) {
+        const current = JSON.parse(localStorage.getItem("digProgress")) || {};
+        const currentPieces = current.pieces || pieces || [];
+
+        const newProgress = {
+          igDiggingProgress: digging,
+          pieces: currentPieces,
+        };
+
+        localStorage.setItem("digProgress", JSON.stringify(newProgress));
         setIgDiggingProgress(digging);
+        setPieces(currentPieces);
       } else {
         setIgDiggingProgress(null);
         alert(
