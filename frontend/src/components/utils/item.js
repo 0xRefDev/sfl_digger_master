@@ -30,7 +30,7 @@ export const digItems = {
   Nothing: Nothing,
   Sand: Sand,
   Crab: Crab,
-  "Broken Pillar": BrokenPillar,
+  "Coprolite": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4TGgAAAAvDQADECdAJm2bq5n+ZRqmIAAZNieKCuxPTdsGbKpYek1cnf8A8H9J01QCBpFsBdV0kOC/jwX+wwIfGmhE/wPCAMQ/Aeq+QNS5E1peizhSvyOy9/UonW9n1rLdWUfSzvB92oOylRCSBg==",
   "Camel Bone": CamelBone,
   "Clam Shell": ClamShell,
   "Old Bottle": OldBottle,
@@ -52,5 +52,5 @@ export const digItems = {
   "Cow Skull": CowSkull,
   "Iron Compass": IronCompass,
   "Emerald Compass": EmeraldCompass,
-  "Coprolite": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4TGgAAAAvDQADECdAJm2bq5n+ZRqmIAAZNieKCuxPTdsGbKpYek1cnf8A8H9J01QCBpFsBdV0kOC/jwX+wwIfGmhE/wPCAMQ/Aeq+QNS5E1peizhSvyOy9/UonW9n1rLdWUfSzvB92oOylRCSBg=="
+  "Broken Pillar": BrokenPillar,
 };
