@@ -71,20 +71,15 @@ export function App() {
       }
 
       const data = await response.json();
+      const digging = data?.data?.digging?.grid;
+
       console.log("Respuesta completa:", data);
+      console.log("Digging grid:", digging);
 
-      const diggingGrid = data?.digging?.grid;
-
-      if (Array.isArray(diggingGrid)) {
-        setIgDiggingProgress(diggingGrid);
-        // Guarda en localStorage para verificar que realmente se guarda bien
-        const progressData = {
-          pieces,
-          igDiggingProgress: diggingGrid,
-        };
-        localStorage.setItem("digProgress", JSON.stringify(progressData));
+      if (Array.isArray(digging)) {
+        setIgDiggingProgress(digging);
       } else {
-        setIgDiggingProgress([]);
+        setIgDiggingProgress(null);
         alert(
           "No se encontró progreso de excavación válido. Revisa tu Farm ID."
         );
