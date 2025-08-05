@@ -172,7 +172,7 @@ export function App() {
               />
             </div>
           </article>
-          <DigItems />
+          <DigItems onItemClick={() => {}} />
         </section>
 
         <section className="flex flex-col gap-5 items-center justify-center">
