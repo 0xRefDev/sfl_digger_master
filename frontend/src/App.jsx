@@ -77,17 +77,16 @@ export function App() {
       console.log("Digging grid:", digging);
 
       if (Array.isArray(digging)) {
-        const current = JSON.parse(localStorage.getItem("digProgress")) || {};
-        const currentPieces = current.pieces || pieces || [];
-
-        const newProgress = {
-          igDiggingProgress: digging,
-          pieces: currentPieces,
-        };
-
-        localStorage.setItem("digProgress", JSON.stringify(newProgress));
         setIgDiggingProgress(digging);
-        setPieces(currentPieces);
+
+        // Solo actualizamos localStorage una vez esté seteado todo
+        const prevData = JSON.parse(localStorage.getItem("digProgress")) || {};
+        const updatedData = {
+          ...prevData,
+          igDiggingProgress: digging,
+          pieces, // preservamos los actuales del state
+        };
+        localStorage.setItem("digProgress", JSON.stringify(updatedData));
       } else {
         setIgDiggingProgress(null);
         alert(
