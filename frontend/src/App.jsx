@@ -31,11 +31,17 @@ export function App() {
   });
 
   useEffect(() => {
-    const progressData = {
-      pieces,
-      igDiggingProgress,
+    const prev = JSON.parse(localStorage.getItem("digProgress")) || {};
+
+    const updated = {
+      pieces: pieces.length ? pieces : prev.pieces || [],
+      igDiggingProgress:
+        Array.isArray(igDiggingProgress) && igDiggingProgress.length
+          ? igDiggingProgress
+          : prev.igDiggingProgress || [],
     };
-    localStorage.setItem("digProgress", JSON.stringify(progressData));
+
+    localStorage.setItem("digProgress", JSON.stringify(updated));
   }, [pieces, igDiggingProgress]);
 
   const handleSetFarmId = (e) => {
