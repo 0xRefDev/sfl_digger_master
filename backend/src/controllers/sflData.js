@@ -8,7 +8,7 @@ const sflDiggingData = {
       if (!id) {
         return res.status(400).json({
           success: false,
-          message: "Se requiere el parámetro ID",
+          message: "Farm ID is required",
         });
       }
 
@@ -17,28 +17,28 @@ const sflDiggingData = {
       );
 
       if (!response.data) {
-        throw new Error("La API no devolvió datos");
+        throw new Error("Sunflower Land API doesn't return data");
       }
 
       res.status(200).json({
         success: true,
-        message: "Datos obtenidos correctamente de Sunflower Land",
+        message: "Successfully obtain data of Sunflower Land",
         data: {
-          digging: response.data.viistedFarmState.desert.digging || [],
+          digging: response.data.visitedFarmState.desert.digging || [],
           farmID: id,
         },
       });
     } catch (error) {
-      console.error("Error al obtener datos:", error.message);
+      console.error("Error Obtaining Data:", error.message);
 
       let statusCode = 500;
-      let errorMessage = "Error en el servidor";
+      let errorMessage = "Server Error";
 
       if (error.response) {
         statusCode = error.response.status;
-        errorMessage = `Error al consultar Sunflower Land API: ${error.response.statusText}`;
+        errorMessage = `Query error with Sunflower Land API: ${error.response.statusText}`;
       } else if (error.request) {
-        errorMessage = "No se recibió respuesta de Sunflower Land API";
+        errorMessage = "Sunflower Land API isn't responding";
       }
 
       res.status(statusCode).json({
