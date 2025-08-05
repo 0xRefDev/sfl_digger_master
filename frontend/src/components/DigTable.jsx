@@ -9,7 +9,7 @@ function Piece({ piece, cellSize, handleStop, deletePiece }) {
   return (
     <Draggable
       nodeRef={nodeRef}
-      defaultPosition={{ x: piece.x, y: piece.y }}
+      position={{ x: piece.x, y: piece.y }}
       onStop={(e, data) => handleStop(piece.id, e, data)}
       grid={[cellSize, cellSize]}
       bounds="parent"
@@ -21,7 +21,6 @@ function Piece({ piece, cellSize, handleStop, deletePiece }) {
         style={{
           width: `${cellSize}px`,
           height: `${cellSize}px`,
-          transform: `translate(${piece.x}px, ${piece.y}px)`,
         }}
       >
         <img
