@@ -54,7 +54,6 @@ export function App() {
     }
 
     try {
-      // opcional: podrías setear un estado de loading aquí
       const response = await fetch(
         `https://sfl-digger-master-backend.vercel.app/api/digData/${farmId}`,
         {
@@ -72,24 +71,28 @@ export function App() {
       }
 
       const data = await response.json();
-      const digging = data?.digging?.grid;
-
       console.log("Respuesta completa:", data);
-      console.log("Digging grid:", digging);
 
-      if (Array.isArray(digging)) {
-        setIgDiggingProgress(digging);
+      const diggingGrid = data?.digging?.grid;
+
+      if (Array.isArray(diggingGrid)) {
+        setIgDiggingProgress(diggingGrid);
+        // Guarda en localStorage para verificar que realmente se guarda bien
+        const progressData = {
+          pieces,
+          igDiggingProgress: diggingGrid,
+        };
+        localStorage.setItem("digProgress", JSON.stringify(progressData));
       } else {
-        // si no llegó el grid, limpiamos o avisamos
-        setIgDiggingProgress(null);
+        setIgDiggingProgress([]);
         alert(
           "No se encontró progreso de excavación válido. Revisa tu Farm ID."
         );
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error al obtener el progreso:", error);
       alert("Error al cargar el progreso. Verifica tu Farm ID.");
-      setIgDiggingProgress(null);
+      setIgDiggingProgress([]);
     }
   };
 
