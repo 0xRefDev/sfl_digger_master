@@ -12,7 +12,7 @@ export function App() {
     return saved ? JSON.parse(saved).igDiggingProgress : null;
   });
 
-  const [piezas, setPiezas] = useState(() => {
+  const [pieces, setPieces] = useState(() => {
     if (typeof window === "undefined") return [];
 
     try {
@@ -20,12 +20,11 @@ export function App() {
       if (!saved) return [];
 
       const parsed = JSON.parse(saved);
-      // Validación profunda del array
-      return Array.isArray(parsed.piezas)
-        ? parsed.piezas.filter((item) => item?.id && item?.src && item?.nombre)
+      return Array.isArray(parsed.pieces)
+        ? parsed.pieces.filter((item) => item?.id && item?.src && item?.nombre)
         : [];
     } catch (e) {
-      console.error("Error al cargar piezas:", e);
+      console.error("Error to load pieces:", e);
       localStorage.removeItem("digProgress");
       return [];
     }
@@ -33,18 +32,18 @@ export function App() {
 
   useEffect(() => {
     const progressData = {
-      piezas,
+      pieces,
       igDiggingProgress,
     };
     localStorage.setItem("digProgress", JSON.stringify(progressData));
-  }, [piezas, igDiggingProgress]);
+  }, [pieces, igDiggingProgress]);
 
   const handleSetFarmId = (e) => {
     const value = e.target.value;
     if (/^\d*$/.test(value)) {
       setFarmId(value);
     } else {
-      alert("Tu Farm ID solo debe contener números😬");
+      alert("Your Farm ID must be a number😬");
     }
   };
 
@@ -67,9 +66,8 @@ export function App() {
       }
 
       const data = await response.json();
-      const digging = data;
+      const digging = data.digging.grid;
       console.log("Digging data:", digging);
-
 
       if (digging) {
         setIgDiggingProgress(digging);
@@ -78,7 +76,7 @@ export function App() {
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Error al cargar el progreso. Verifica tu Farm ID.");
+      alert("Error to load progress. Verify your Farm ID.");
     }
   };
 
@@ -87,13 +85,13 @@ export function App() {
     if (farmId) {
       igDigProgress();
     } else {
-      alert("Por favor, ingresa tu Farm ID.");
+      alert("Please, enter your Farm ID.");
     }
   };
 
   let digs = 25;
-  if (Array.isArray(piezas)) {
-    piezas.forEach((p) => {
+  if (Array.isArray(pieces)) {
+    pieces.forEach((p) => {
       if (p?.nombre && p.nombre !== "Nothing" && p.nombre !== "Possible") {
         digs = digs - 1;
       }
@@ -109,8 +107,8 @@ export function App() {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => {
-                  if (confirm("¿Reiniciar todo el progreso?")) {
-                    setPiezas([]);
+                  if (confirm("¿Reset all progress?")) {
+                    setPieces([]);
                     setIgDiggingProgress([]);
                     localStorage.setItem("usedShovels", JSON.stringify(25));
                   }
@@ -153,8 +151,8 @@ export function App() {
 
         <section className="flex flex-col gap-5 items-center justify-center">
           <DigTable
-            piezas={piezas}
-            setPiezas={setPiezas}
+            pieces={pieces}
+            setPieces={setPieces}
             igProgress={igDiggingProgress}
           />
         </section>
