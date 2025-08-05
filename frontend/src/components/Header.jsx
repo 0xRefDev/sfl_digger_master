@@ -37,8 +37,8 @@ export function Header() {
         <h1 className="relative px-4 py-1 bg-[#030712]/60 rounded-full border-2 border-cyan-800/50">
           Made with ❤️ by REFH4CK
           <div className="absolute -z-10 flex justify-between w-[17.5rem] top-5 -translate-y-1/2 -left-7">
-            <span><img src={arrow} alt="Green pixelart arrow" className="size-6 -rotate-90" /></span>
-            <span><img src={arrow} alt="Green pixelart arrow" className="size-6 rotate-y-180 rotate-90" /></span>
+            <span><img src={arrow} alt="Green pixel art arrow" className="size-6 -rotate-90" /></span>
+            <span><img src={arrow} alt="Green pixel art arrow" className="size-6 rotate-y-180 rotate-90" /></span>
           </div>
           <span className="absolute bg-amber-400/35 px-2 py-1 rounded-full -right-7 top-12 -translate-y-1/2 text-xs font-mono ">
             0xAf57D68A12F28501580407B80B4d3690c9B74e62

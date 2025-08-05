@@ -1,39 +1,62 @@
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { digItems } from "./utils/item.js";
 
-export function DigItems({ onItemClick }) {
+export function DigItems({ onItemClick = () => {} }) {
+  const dragItem = useRef(null);
 
-const dragItem = useRef(null);
+  const handleDragStart = useCallback((e, img, name) => {
+    try {
+      e.dataTransfer.setData("text/plain", JSON.stringify({ img, name }));
+      e.dataTransfer.effectAllowed = "copy";
+      dragItem.current = e.currentTarget;
+      e.currentTarget.style.opacity = "0.4";
+    } catch (err) {
+      console.error("Drag start error:", err);
+    }
+  }, []);
 
-  const handleDragStart = (e, img, name) => {
-    e.dataTransfer.setData("text/plain", JSON.stringify({ img, name }));
-    dragItem.current = e.target;
-    e.target.style.opacity = "0.4";
-  };
+  const handleDragEnd = useCallback((e) => {
+    if (e.currentTarget) {
+      e.currentTarget.style.opacity = "1";
+    }
+    dragItem.current = null;
+  }, []);
 
-  const handleDragEnd = (e) => {
-    e.target.style.opacity = "1";
-  };
+  const handleClick = useCallback(
+    (img, name) => {
+      onItemClick(img, name);
+    },
+    [onItemClick]
+  );
 
   return (
     <article className="px-2 max-w-[550px]">
       <div className="w-full h-[6rem] overflow-y-auto py-2 flex flex-wrap justify-center items-center gap-1 rounded-lg outline-2 outline-amber-400/75">
         {Object.entries(digItems).map(([name, img]) => (
-          <div 
+          <div
             key={name}
-            onClick={() => onItemClick(img, name)}
+            role="button"
+            aria-label={name}
+            tabIndex={0}
+            onClick={() => handleClick(img, name)}
             draggable
             onDragStart={(e) => handleDragStart(e, img, name)}
             onDragEnd={handleDragEnd}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleClick(img, name);
+              }
+            }}
             className="cursor-pointer hover:scale-110 transition-transform p-1"
           >
-            <img 
-              src={img} 
-              title={name} 
-              alt={name} 
-              className="size-[1.9rem] object-contain aspect-square select-none" 
+            <img
+              src={img}
+              title={name}
+              alt={name}
+              className="size-[1.9rem] object-contain aspect-square select-none"
               draggable="false"
-              style={{ imageRendering: 'pixelated' }} 
+              style={{ imageRendering: "pixelated" }}
             />
           </div>
         ))}

@@ -9,7 +9,7 @@ export function App() {
   const [farmId, setFarmId] = useState("");
   const [igDiggingProgress, setIgDiggingProgress] = useState(() => {
     const saved = localStorage.getItem("digProgress");
-    return saved ? JSON.parse(saved).igDiggingProgress : null;
+    return saved ? JSON.parse(saved).igDiggingProgress ?? [] : [];
   });
 
   const [pieces, setPieces] = useState(() => {
@@ -48,7 +48,13 @@ export function App() {
   };
 
   const igDigProgress = async () => {
+    if (!farmId) {
+      alert("Please provide a Farm ID.");
+      return;
+    }
+
     try {
+      // opcional: podrías setear un estado de loading aquí
       const response = await fetch(
         `https://sfl-digger-master-backend.vercel.app/api/digData/${farmId}`,
         {
@@ -66,17 +72,24 @@ export function App() {
       }
 
       const data = await response.json();
-      const digging = data.digging.grid;
-      console.log("Digging data:", digging);
+      const digging = data?.digging?.grid;
 
-      if (digging) {
+      console.log("Respuesta completa:", data);
+      console.log("Digging grid:", digging);
+
+      if (Array.isArray(digging)) {
         setIgDiggingProgress(digging);
       } else {
+        // si no llegó el grid, limpiamos o avisamos
         setIgDiggingProgress(null);
+        alert(
+          "No se encontró progreso de excavación válido. Revisa tu Farm ID."
+        );
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Error to load progress. Verify your Farm ID.");
+      alert("Error al cargar el progreso. Verifica tu Farm ID.");
+      setIgDiggingProgress(null);
     }
   };
 
@@ -153,7 +166,9 @@ export function App() {
           <DigTable
             pieces={pieces}
             setPieces={setPieces}
-            igProgress={igDiggingProgress}
+            igProgress={
+              Array.isArray(igDiggingProgress) ? igDiggingProgress : []
+            }
           />
         </section>
       </main>
