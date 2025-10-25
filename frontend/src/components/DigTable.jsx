@@ -1,7 +1,8 @@
 import { useRef, useEffect, useCallback } from "react";
 import Draggable from "react-draggable";
-import DigSite from "../assets/images/digsite.png";
-import { digItems } from "./utils/item.js";
+import DigSite from "@/assets/images/digsite.png";
+import Nothing from "@/assets/images/nothing.png";
+import { digItems } from "@/components/utils/item.js";
 
 function Piece({ piece, cellSize, handleStop, deletePiece }) {
   const nodeRef = useRef(null);
@@ -46,8 +47,8 @@ function Piece({ piece, cellSize, handleStop, deletePiece }) {
 }
 
 export function DigTable({ pieces = [], setPieces, igProgress = [] }) {
-  const imgWidth = 500;
-  const imgHeight = 500;
+  const imgWidth = 480;
+  const imgHeight = 480;
   const cellSize = imgWidth / 10;
 
   const digCount = 25;
@@ -152,7 +153,7 @@ export function DigTable({ pieces = [], setPieces, igProgress = [] }) {
       offsets.forEach((offset, index) => {
         newPieces.push({
           id: `${sandId}-x-${index}`,
-          src: digItems.Nothing,
+          src: Nothing,
           name: "Nothing",
           x: snappedX + offset.x,
           y: snappedY + offset.y,
@@ -178,7 +179,7 @@ export function DigTable({ pieces = [], setPieces, igProgress = [] }) {
 
   return (
     <div
-      className="relative flex justify-center"
+      className="relative flex justify-center top-2"
       style={{ width: imgWidth, height: imgHeight }}
       onDragOver={handleDragOver}
       onDrop={handleDrop}
@@ -186,11 +187,11 @@ export function DigTable({ pieces = [], setPieces, igProgress = [] }) {
       <img
         src={DigSite}
         alt="DigSite"
-        className="absolute top-4 left-0 w-full h-full block pointer-events-none rounded-lg select-none user-drag-none"
+        className="absolute left-0 w-full h-full block pointer-events-none rounded-lg select-none user-drag-none"
         style={{ zIndex: 0 }}
       />
 
-      <div className="absolute top-4 left-0 w-full h-full overflow-hidden">
+      <div className="absolute left-0 w-full h-full overflow-hidden">
         {Array.isArray(igProgress) &&
           igProgress.length > 0 &&
           igProgress.map((cell, index) => {
