@@ -30,8 +30,8 @@ export function DigItems({ onItemClick = () => {} }) {
   );
 
   return (
-    <article className="px-2 max-w-[550px]">
-      <div className="w-full h-[6rem] overflow-y-auto py-2 flex flex-wrap justify-center items-center gap-1 rounded-lg outline-2 outline-amber-400/75">
+    <article className="max-w-[490px]">
+      <div className="w-full h-[6.1rem] overflow-y-auto py-2 flex flex-wrap justify-center items-center gap-1 rounded-lg outline-2 outline-amber-400/75">
         {Object.entries(digItems).map(([name, img]) => (
           <div
             key={name}
@@ -54,7 +54,7 @@ export function DigItems({ onItemClick = () => {} }) {
               src={img}
               title={name}
               alt={name}
-              className="size-[1.9rem] object-contain aspect-square select-none"
+              className="size-[1.85rem] object-contain aspect-square select-none"
               draggable="false"
               style={{ imageRendering: "pixelated" }}
             />
