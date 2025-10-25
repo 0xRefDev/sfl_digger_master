@@ -13,7 +13,12 @@ const sflDiggingData = {
       }
 
       const response = await axios.get(
-        `https://api.sunflower-land.com/visit/${id}`
+        `https://api.sunflower-land.com/visit/${id}`,
+        {
+          headers: {
+            "x-api-key": process.env.SUNFLOWER_LAND_API_KEY,
+          },
+        }
       );
 
       if (!response.data) {
