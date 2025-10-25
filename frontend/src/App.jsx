@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Layout } from "./components/Layout";
-import { Header } from "./components/Header";
-import { DigTable } from "./components/DigTable";
-import { DigItems } from "./components/DigItems";
-import Shovel from "./assets/images/shovel.png";
+import { Layout } from "@/components/Layout";
+import { Header } from "@/components/Header";
+import { DigTable } from "@/components/DigTable";
+import { DigItems } from "@/components/DigItems";
+import Shovel from "@/assets/images/shovel.png";
 
 export function App() {
   const [farmId, setFarmId] = useState("");
@@ -79,18 +79,14 @@ export function App() {
       const data = await response.json();
       const digging = data?.data?.digging?.grid;
 
-      console.log("Respuesta completa:", data);
-      console.log("Digging grid:", digging);
-
       if (Array.isArray(digging)) {
         setIgDiggingProgress(digging);
 
-        // Solo actualizamos localStorage una vez esté seteado todo
         const prevData = JSON.parse(localStorage.getItem("digProgress")) || {};
         const updatedData = {
           ...prevData,
           igDiggingProgress: digging,
-          pieces, // preservamos los actuales del state
+          pieces,
         };
         localStorage.setItem("digProgress", JSON.stringify(updatedData));
       } else {
@@ -127,10 +123,12 @@ export function App() {
   return (
     <Layout>
       <Header />
-      <main className="max-w-[550px] mx-auto">
+      <main className="max-w-[480px] mx-auto">
         <section className="w-full flex flex-col items-center justify-center">
-          <article className="w-full flex justify-between items-center gap-4 px-4 mt-2">
-            <div className="flex items-center gap-2">
+          {/* Options: Reset, Farm ID, Shovels */}
+          <article className="w-full flex justify-between items-center gap-4">
+            <div className="flex items-center">
+              {/* Reset Button */}
               <button
                 onClick={() => {
                   if (confirm("¿Reset all progress?")) {
@@ -147,6 +145,7 @@ export function App() {
                 />
               </button>
             </div>
+            {/* Farm ID Input */}
             <form
               onSubmit={(e) => {
                 handleSubmit(e);
@@ -154,12 +153,13 @@ export function App() {
             >
               <input
                 type="text"
-                className="outline-none bg-[#030712]/60 rounded-full border-2 border-cyan-800/50 px-4 py-1 placeholder:text-green-500/90 placeholder:font-mono"
+                className="outline-none bg-[#030712]/60 rounded-full border-2 border-cyan-800/50 px-4 py-1 placeholder:text-green-500/90 placeholder:font-mono xs:w-fit w-[21rem]"
                 placeholder="# Farm ID"
                 value={farmId}
                 onChange={handleSetFarmId}
               />
             </form>
+            {/* Shovels */}
             <div className="flex items-center gap-2">
               <h1 className="text-xl font-bold text-center my-4">
                 {digs < 0 ? 0 : digs}
@@ -172,6 +172,7 @@ export function App() {
               />
             </div>
           </article>
+          {/* Dig Items */}
           <DigItems onItemClick={() => {}} />
         </section>
 
