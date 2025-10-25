@@ -13,7 +13,7 @@ const sflDiggingData = {
       }
 
       const response = await axios.get(
-        `https://api.sunflower-land.com/visit/${id}`,
+        `https://api.sunflower-land.com/community/farms/${id}`,
         {
           headers: {
             "x-api-key": process.env.SUNFLOWER_LAND_API_KEY,
@@ -29,7 +29,7 @@ const sflDiggingData = {
         success: true,
         message: "Successfully obtain data of Sunflower Land",
         data: {
-          digging: response.data.visitedFarmState.desert.digging || [],
+          digging: response.data.farm.desert.digging || [],
           farmID: id,
         },
       });
