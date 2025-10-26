@@ -10,7 +10,7 @@ function Piece({ piece, cellSize, handleStop, deletePiece }) {
   return (
     <Draggable
       nodeRef={nodeRef}
-      position={{ x: piece.x, y: piece.y }}
+      defaultPosition={{ x: piece.x, y: piece.y }}
       onStop={(e, data) => handleStop(piece.id, e, data)}
       grid={[cellSize, cellSize]}
       bounds="parent"
