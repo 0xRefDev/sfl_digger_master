@@ -21,7 +21,7 @@ export function App() {
 
       const parsed = JSON.parse(saved);
       return Array.isArray(parsed.pieces)
-        ? parsed.pieces.filter((item) => item?.id && item?.src && item?.nombre)
+        ? parsed.pieces.filter((item) => item?.id && item?.src && item?.name)
         : [];
     } catch (e) {
       console.error("Error to load pieces:", e);
@@ -114,7 +114,7 @@ export function App() {
   let digs = 25;
   if (Array.isArray(pieces)) {
     pieces.forEach((p) => {
-      if (p?.nombre && p.nombre !== "Nothing" && p.nombre !== "Possible") {
+      if (p?.name && p.name !== "Nothing" && p.name !== "Possible") {
         digs = digs - 1;
       }
     });
@@ -134,6 +134,7 @@ export function App() {
                   if (confirm("¿Reset all progress?")) {
                     setPieces([]);
                     setIgDiggingProgress([]);
+                    localStorage.setItem("digProgress", JSON.stringify({"pieces": [], "igDiggingProgress": []}));
                     localStorage.setItem("usedShovels", JSON.stringify(25));
                   }
                 }}
