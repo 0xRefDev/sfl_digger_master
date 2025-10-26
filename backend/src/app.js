@@ -1,12 +1,11 @@
 import express from "express";
-import corsMiddleware from "./middlewares/cors.js";
 import sflRoutes from "./routes/sflRoutes.js";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
-app.use(corsMiddleware);
-app.options("*", corsMiddleware);
+app.use(cors());
 
 app.use("/api/digData", sflRoutes);
 
@@ -14,14 +13,14 @@ app.get("/", (req, res) => {
   res.send("Running🚀🧑🏻‍🚀");
 });
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).json({
     success: false,
     message: "Ruta no encontrada",
   });
 });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error(err.stack);
   res.status(500).json({
     success: false,
@@ -34,5 +33,5 @@ app.use((err, req, res, next) => {
 const PORT = 3000;
 
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
