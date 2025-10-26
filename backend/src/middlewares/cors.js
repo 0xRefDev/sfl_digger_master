@@ -2,7 +2,9 @@ import cors from 'cors';
 
 const allowedOrigins = [
   'https://dig-master.vercel.app',
-  'http://localhost:3000'
+  'http://localhost:3000',
+  'http://localhost:5173',
+
 ];
 
 const corsOptions = {
