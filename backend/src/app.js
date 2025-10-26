@@ -11,7 +11,7 @@ app.options("*", corsMiddleware);
 app.use("/api/digData", sflRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Backend funcionando correctamente");
+  res.send("Running🚀🧑🏻‍🚀");
 });
 
 app.use((req, res, next) => {
