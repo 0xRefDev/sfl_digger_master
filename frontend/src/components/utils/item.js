@@ -27,9 +27,9 @@ import Stone from "@/assets/images/stone.png";
 import MoonCrystal from "@/assets/images/moon_crystal.webp";
 
 export const digItems = {
-  // Possible: Possible,
-  // Nothing: Nothing,
   // "Pirate Bounty": PirateBounty,
+  Possible: Possible,
+  Nothing: Nothing,
   Sand: Sand,
   Crab: Crab,
   "Coprolite": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4TGgAAAAvDQADECdAJm2bq5n+ZRqmIAAZNieKCuxPTdsGbKpYek1cnf8A8H9J01QCBpFsBdV0kOC/jwX+wwIfGmhE/wPCAMQ/Aeq+QNS5E1peizhSvyOy9/UonW9n1rLdWUfSzvB92oOylRCSBg==",
