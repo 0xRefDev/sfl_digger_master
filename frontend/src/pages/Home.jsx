@@ -20,7 +20,7 @@ export function Home() {
           <article className="grid grid-cols-1 gap-4 mt-12">
             {tools.map(({ name, sprite, url }, i) => (
               <a
-                className="flex border-2 border-slate-500 w-full h-[10rem] rounded-xl p-2 bg-slate-800 overflow-hidden lg:mx-auto lg:w-[30rem] justify-between"
+                className={`flex border-2 border-slate-500 w-full h-[10rem] rounded-xl p-2 bg-slate-800 overflow-hidden lg:mx-auto lg:w-[30rem] ${sprite === "digging" ? "lg:justify-evenly" : "lg:justify-between"}`}
                 key={i}
                 href={url}
               >
