@@ -1,1 +1,66 @@
 @import "tailwindcss";
+
+@theme {
+  --font-pixelify: "Pixelify Sans";
+  --font-pixelify-light: "Pixelify Light";
+}
+
+@font-face {
+  font-family: "Pixelify Sans";
+  src: url("/fonts/PixelifySans-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Pixelify Light";
+  src: url("/fonts/PixelifySans-Regular.ttf");
+}
+
+.animated-sprite {
+  background-image: url('./walking_dig.webp');
+  width: 72px;
+  height: 72px;
+  transform: scale(4);
+  image-rendering: pixelated;
+  animation: play-animation 2s steps(21) infinite;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
+.gridDigging {
+  grid-template-areas:
+    "x0y0 x1y0 x2y0 x3y0"
+    "x0y1 x1y1 x2y1 x3y1"
+    "x0y2 x1y2 x2y2 x3y2"
+    "x0y3 x1y3 x2y3 x3y3";
+}
+
+
+@keyframes play-animation {
+  from {
+    background-position: 0px 0px;
+  }
+
+  to {
+    background-position: -2016px 0px;
+  }
+}
+
+.interpolate {
+  animation: show 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes show {
+  0% {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
