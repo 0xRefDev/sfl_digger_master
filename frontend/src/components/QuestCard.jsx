@@ -20,10 +20,10 @@ export function QuestCard({
 
   return (
     <article
-      className="p-4 bg-[#0C142A] rounded-2xl border-2 border-white/10 shadow-lg shadow-[#fff]/5 w-[29rem] flex flex-col gap-4 transition-all"
+      className="p-4 bg-[#0C142A] rounded-2xl border-2 border-white/10 shadow-lg shadow-[#fff]/5 md:w-[29rem] flex flex-col gap-4 transition-all"
       id="quest_card"
     >
-      <div className="flex justify-between">
+      <div className="flex justify-between flex-col items-center gap-2 sm:flex-row">
         <div>
           <h2 className="text-2xl font-bold">{name}</h2>
           <p className="w-[14rem] truncate" title={description}>
