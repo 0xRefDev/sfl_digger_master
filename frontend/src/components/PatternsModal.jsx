@@ -84,7 +84,7 @@ useEffect(() => {
       {isOpen && (
         <section className="absolute flex justify-center items-center top-0 left-0 bg-black/40 w-full h-dvh backdrop-blur-xs">
           <Fade direction="up">
-            <article className="bg-slate-800 border-4 border-slate-700 w-[29rem] rounded-xl p-2 relative shadow-2xl px-3">
+            <article className="bg-slate-800 border-4 border-slate-700 w-full md:w-[29rem] rounded-xl p-2 relative shadow-2xl px-3">
               <button
                 onClick={() => setIsOpen((prev) => !prev)}
                 className="absolute top-2 right-2 cursor-pointer"
@@ -98,7 +98,7 @@ useEffect(() => {
               <h2 className="text-center font-medium text-3xl">
                 Today's Patterns
               </h2>
-              <div className="grid grid-cols-3 gap-1.5 pt-5 h-full">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 pt-5 h-full">
                 {localPatterns.patterns.map((pat, index) => {
                   const formation = DIGGING_FORMATIONS[pat];
                   if (!formation) return null;
