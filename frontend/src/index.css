@@ -19,7 +19,6 @@
   background-image: url('/assets/walking_dig.webp');
   width: 72px;
   height: 72px;
-  transform: scale(4);
   image-rendering: pixelated;
   animation: play-animation 2s steps(21) infinite;
 }
