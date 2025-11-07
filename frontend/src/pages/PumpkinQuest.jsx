@@ -33,17 +33,18 @@ export function PumpkinQuest() {
       <main className="flex flex-col items-center p-4 pt-8">
         <header className="flex items-center justify-center w-fit relative">
           <GoBack />
-          <h1 className="text-5xl font-bold">Pumpkin Quest</h1>
+          <h1 className="text-2xl md:text-5xl mt-2 md:mt-0 font-bold">Pumpkin Quest</h1>
         </header>
         <div className="w-full flex justify-center">
           <div className="relative w-[25rem]">
+            <img src="https://img.icons8.com/EEEEEE/search" className="absolute w-[1.8rem] top-5.5 left-2 h-auto" />
             <input
               type="text"
               placeholder="Search your Telegram Bot Mission..."
               onChange={(e) => {
                 handleChange(e.target.value);
               }}
-              className="bg-[#0C142A] border-2 border-white/30 p-2 w-full max-w-[500px] rounded-full mt-4 pl-12 outline-none mx-auto"
+              className="bg-[#0C142A] border-2 border-white/30 p-2 w-full max-w-[500px] rounded-full mt-4 pl-10 outline-none mx-auto"
             />
           </div>
         </div>
