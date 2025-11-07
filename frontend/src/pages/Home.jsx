@@ -9,53 +9,62 @@ export function Home() {
       <main className="flex flex-col items-center p-4 pt-8 h-[76dvh] max-w-[700px] mx-auto">
         <section className="w-full">
           <div>
-            <h1 className="text-5xl text-center font-pixelify">Welcome to</h1>
-            <h2 className="text-7xl font-pixelify text-center w-full">
+            <h1 className="text-[2rem] md:text-5xl text-center font-pixelify">
+              Welcome to
+            </h1>
+            <h2 className="text-[3rem] md:text-7xl font-pixelify text-center w-full">
               SFL{" "}
               <span className="text-[#52b641] text-shadow-[4px_4px] text-shadow-[#1d6711]">
                 TOOLS
               </span>
             </h2>
           </div>
-          <article className="grid grid-cols-1 gap-4 mt-12">
-            {tools.map(({ name, sprite, url }, i) => (
+          <a
+            className="flex justify-center underline underline-offset-3 text-indigo-400/90 font-semibold text-[1.25rem] md:text-2xl"
+            href="https://sunflower-land.com/play/#/visit/5013675572414755"
+            target="_blank"
+          >
+            Visit my land!
+          </a>
+          <article className="grid grid-cols-1 gap-4 mt-6 md:mt-12">
+            {tools.map(({ name, sprite, url, description }, i) => (
               <a
-                className={`flex border-2 border-slate-500 w-full h-[10rem] rounded-xl p-2 bg-slate-800 overflow-hidden lg:mx-auto lg:w-[30rem] ${sprite === "digging" ? "" : "lg:justify-between"}`}
+                className={`flex border-2 border-slate-500 w-full sm:w-[25rem] h-[10rem] max-w-[500px] rounded-xl p-2 bg-slate-800 overflow-hidden mx-auto md:w-[30rem] ${
+                  sprite === "digging" ? "" : "lg:justify-between"
+                }`}
                 key={i}
                 href={url}
               >
-                <div className="pl-3 flex gap-2 flex-col">
-                  <h3 className="text-4xl font-pixelify-light text-[#77c16a] text-shadow-[1px_2px] text-shadow-[#FFF]/20">
+                <div className="pl-1 md:pl-3 flex gap-2 flex-col">
+                  <h3 className="text-2xl text-nowrap md:text-4xl font-pixelify-light text-[#77c16a] text-shadow-[1px_2px] text-shadow-[#FFF]/20">
                     {name}
                   </h3>
-                  <p className="w-[16rem]">
-                    A tool that will help you with your daily excavations, easy
-                    to use and intuitive.
+                  <p className="text-sm w-[10rem] md:text-lg md:w-[16rem]">
+                    {description}
                   </p>
                 </div>
                 {sprite === "digging" ? (
                   <Sprite spriteImage={sprite} />
                 ) : (
                   <img
-                    className="w-[11rem] h-[6rem] mt-6 pixelated"
+                    className="w-[6rem] h-[4rem] mt-8 md:w-[11rem] md:h-[6rem] md:mt-6 pixelated"
                     src={Boat}
                   />
                 )}
               </a>
             ))}
           </article>
+          <article className="flex flex-col mt-4">
+            <p className="text-center text-xl font-pixelify-light">
+              You wish donate?
+            </p>
+            <span className="bg-slate-800 p-1 px-2 rounded-full border-2 border-white/30 text-xs md:text-[0.95rem] text-center mx-auto">
+              0xAf57D68A12F28501580407B80B4d3690c9B74e62
+            </span>
+          </article>
         </section>
       </main>
-      <footer className="pt-0 p-4 flex flex-col gap-4 items-center h-[13rem] max-w-[700px] relative mx-auto">
-        <article className="flex flex-col">
-          <p className="text-center text-xl font-pixelify-light">
-            You wish donate?
-          </p>
-          <span className="bg-slate-800 p-1 px-4 rounded-full border-2 border-white/30">
-            0xAf57D68A12F28501580407B80B4d3690c9B74e62
-          </span>
-        </article>
-
+      <footer className="pt-0 p-4 flex flex-col gap-4 items-center h-[13rem] max-w-[500px] relative mx-auto">
         <article className="flex flex-col gap-4">
           <a
             href="https://discord.gg/MexBzYbxju"
