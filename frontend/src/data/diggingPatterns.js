@@ -1,4 +1,4 @@
-const SEASONAL_ARTEFACT = "Moon Crystal";
+const SEASONAL_ARTEFACT = "Ammonite Shell";
 
 export const DIGGING_FORMATIONS = {
   // Horizontal Zig Zag - X Coins
