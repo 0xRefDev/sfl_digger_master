@@ -25,6 +25,7 @@ import Possible from "@/assets/images/possible.png";
 import Wood from "@/assets/images/wood.png";
 import Stone from "@/assets/images/stone.png";
 import MoonCrystal from "@/assets/images/moon_crystal.webp";
+import AmmoniteShell from "@/assets/images/ammonite_shell.webp";
 
 export const digItems = {
   // "Pirate Bounty": PirateBounty,
@@ -32,12 +33,11 @@ export const digItems = {
   Nothing: Nothing,
   Sand: Sand,
   Crab: Crab,
-  "Coprolite": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4TGgAAAAvDQADECdAJm2bq5n+ZRqmIAAZNieKCuxPTdsGbKpYek1cnf8A8H9J01QCBpFsBdV0kOC/jwX+wwIfGmhE/wPCAMQ/Aeq+QNS5E1peizhSvyOy9/UonW9n1rLdWUfSzvB92oOylRCSBg==",
   "Camel Bone": CamelBone,
   "Clam Shell": ClamShell,
   "Old Bottle": OldBottle,
   Vase: Vase,
-  "Moon Crystal": MoonCrystal,
+  "Ammonite Shell": AmmoniteShell,
   Hieroglyph: Hieroglyph,
   "Ancient Clock": AncientClock,
   "Sea Cucumber": SeaCucumber,
@@ -50,4 +50,6 @@ export const digItems = {
   Wood,
   "Wooden Compass": WoodenCompass,
   "Cockle Shell": CockleShell,
+  // "Moon Crystal": MoonCrystal,
+  // "Coprolite": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4TGgAAAAvDQADECdAJm2bq5n+ZRqmIAAZNieKCuxPTdsGbKpYek1cnf8A8H9J01QCBpFsBdV0kOC/jwX+wwIfGmhE/wPCAMQ/Aeq+QNS5E1peizhSvyOy9/UonW9n1rLdWUfSzvB92oOylRCSBg==",
 };
