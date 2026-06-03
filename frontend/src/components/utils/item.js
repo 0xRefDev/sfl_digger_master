@@ -38,6 +38,7 @@ export const digItems = {
   "Old Bottle": OldBottle,
   Vase: Vase,
   "Ammonite Shell": AmmoniteShell,
+  "Salt Dino Egg": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4TJ4AAAAvDYADEE9gpgESahCAj5KEIokzi6c1VEW2Qd0QD/xpJLQwYlDIRhK063AEy3Sip3QY//wHAP//rsymyLlMh0hRy1aA21rbnuQh1z//BHwwQNogQx/Uzo7Wip8N0D6um4aI6P8EQFo4AFplQBqqyIFUlDigI5EMEhXrHEbJpYTTlEsDw9RM969xbO6c3/XnzV83Y8y+rPv1c1su5jfgDw==",
   Hieroglyph: Hieroglyph,
   "Ancient Clock": AncientClock,
   "Sea Cucumber": SeaCucumber,
@@ -50,6 +51,4 @@ export const digItems = {
   Wood,
   "Wooden Compass": WoodenCompass,
   "Cockle Shell": CockleShell,
-  // "Moon Crystal": MoonCrystal,
-  // "Coprolite": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4TGgAAAAvDQADECdAJm2bq5n+ZRqmIAAZNieKCuxPTdsGbKpYek1cnf8A8H9J01QCBpFsBdV0kOC/jwX+wwIfGmhE/wPCAMQ/Aeq+QNS5E1peizhSvyOy9/UonW9n1rLdWUfSzvB92oOylRCSBg==",
 };
