@@ -1,4 +1,4 @@
-const SEASONAL_ARTEFACT = "Ammonite Shell";
+const SEASONAL_ARTEFACT = "Salt Dino Egg";
 
 export const DIGGING_FORMATIONS = {
   // Horizontal Zig Zag - X Coins
